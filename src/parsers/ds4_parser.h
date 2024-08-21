@@ -16,25 +16,25 @@ typedef struct button_index {
 
 //Sticks x and y values
 
-button_index LEFT_STICK_X = {
+button_index POS_LEFT_STICK_X = {
     .byte_index = 2,
     .bit_index = 0,
     .bit_size = 8,
 };
 
-button_index LEFT_STICK_Y = {
+button_index POS_LEFT_STICK_Y = {
     .byte_index = 3,
     .bit_index = 0,
     .bit_size = 8,
 };
 
-button_index RIGHT_STICK_X = {
+button_index POS_RIGHT_STICK_X = {
     .byte_index = 4,
     .bit_index = 0,
     .bit_size = 8,
 };
 
-button_index RIGHT_STICK_Y = {
+button_index POS_RIGHT_STICK_Y = {
     .byte_index = 5,
     .bit_index = 0,
     .bit_size = 8,
@@ -89,6 +89,7 @@ button_index POS_L3 = {
 };
 
 //Option and Sharing
+
 button_index POS_OPT = {
     .byte_index = 7,
     .bit_index = 5,
