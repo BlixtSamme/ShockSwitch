@@ -23,32 +23,58 @@ static struct bt_conn *ds4_conn;
 static struct bt_hogp hogp;
 static struct bt_conn *auth_conn;
 
-void hogp_ready_cb(void){
+
+
+/* HID protocol stuff */
+
+static void hogp_ready_cb(void){
     printf("HID instance initialized");
     /* Start HID listening thingy */
 }
 
-void hogp_fail_cb(void){
+static void hogp_fail_cb(void){
     printf("HID instance initialization failed");
 }
 
-void hogp_update_cb(){
+static void hogp_update_cb(){
     printf("HID instance protocol updated");
 }
 
-struct bt_hogp_init_params hogp_params = {
+struct bt_hogp_init_params hogp_parameters = {
     .ready_cb = hogp_ready_cb,
     .prep_error_cb = hogp_fail_cb,
     .pm_update_cb = hogp_update_cb
 };
 
+
+
+/* Bluetooth auth stuff */
+
+static void bt_auth_display_cb(void){
+
+}
+
+static void bt_auth_confirm_cb(void){
+
+}
+
+static void bt_auth_cancel_cb(void){
+
+}
+
+struct bt_conn_auth_cb authentication_callbacks = {
+    .passkey_confirm = bt_auth_confirm_cb,
+    .passkey_display = bt_auth_display_cb ,    
+    .cancel = bt_auth_cancel_cb
+}
+
 int main(void)
 {
     /* STEP 1 intit hogp*/
-    bt_hogp_init(&hogp, &hogp_params);
+    bt_hogp_init(&hogp, &hogp_parameters);
 
     /* STEP 2 init callbacks */
-
+    bt_conn_auth_cb_register();
 
     /* STEP 3 intit BLE */
 
