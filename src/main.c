@@ -1,8 +1,11 @@
 #include <zephyr/kernel.h>
+
 #include <zephyr/bluetooth/bluetooth.h>
-#include <zephyr/bluetooth/gatt.h>
-#include <zephyr/bluetooth/hci.h>
-#include <zephyr/bluetooth/uuid.h>
+#include <bluetooth/services/hogp.h>
+
+#include <dk_buttons_and_leds.h>
+
+#include <zephyr/settings/settings.h>
 
 int main(void)
 {

@@ -1,11 +1,11 @@
 {
-    "nrf-connect.applications": [
-        "${workspaceFolder}"
-    ],
+    "nrf-connect.applications": [],
     "files.associations": {
         "kernel.h": "c",
         "bluetooth.h": "c",
         "uuid.h": "c",
-        "hci.h": "c"
+        "hci.h": "c",
+        "hogp.h": "c",
+        "gatt.h": "c"
     }
 }
