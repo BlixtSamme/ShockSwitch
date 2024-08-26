@@ -23,12 +23,25 @@ static struct bt_conn *ds4_conn;
 static struct bt_hogp hogp;
 static struct bt_conn *auth_conn;
 
+static void hids_on_ready(struct k_work *work);
+static K_WORK_DEFINE(hids_ready_work, hids_on_ready);
 
+
+
+/* HID Ready */
+static void hids_on_ready(struct k_work *work){
+
+    int err;
+    struct bt_hogp_rep_info *rep = NULL;
+
+    printf("Ready to get reports from DS4");
+}
 
 /* HID protocol stuff */
 
 static void hogp_ready_cb(void){
     printf("HID instance initialized");
+    k_work_submit(&hids_ready_work);
     /* Start HID listening thingy */
 }
 
@@ -130,5 +143,11 @@ int main(void)
 
 
     err = bt_scan_start(BT_SCAN_TYPE_SCAN_ACTIVE);
+
+    if(err) {
+        printf("Scanning failed to start");
+        return 0;
+    }
     /* STEP 5 start scanner */
+    printf("Scanning started");
 }
